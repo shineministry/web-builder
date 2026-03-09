@@ -2,51 +2,267 @@
 <html>
 
 <head>
-<title>Shine Builder</title>
+
+<title>Shine Site Builder</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<header>
-<h2>Shine Website Builder</h2>
+<!-- TOP TOOLBAR -->
+
+<header class="topbar">
+
+<div class="logo">
+Shine Builder
+</div>
+
+<nav class="toolbar">
+
+<button>Undo</button>
+<button>Redo</button>
+
+<button>Preview</button>
+
+<button>Publish</button>
+
+</nav>
+
 </header>
+
+
+
+<!-- MAIN EDITOR -->
 
 <div class="editor">
 
-<div class="left-panel">
-<h3>Elements</h3>
 
-<button draggable="true" ondragstart="drag(event)" data-type="heading">Heading</button>
-<button draggable="true" ondragstart="drag(event)" data-type="text">Text</button>
-<button draggable="true" ondragstart="drag(event)" data-type="image">Image</button>
-<button draggable="true" ondragstart="drag(event)" data-type="button">Button</button>
-<button draggable="true" ondragstart="drag(event)" data-type="video">Video</button>
 
-</div>
+<!-- LEFT SIDEBAR (INSERT PANEL) -->
 
-<div id="canvas" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<aside class="left-panel">
 
-<div class="right-panel">
-<h3>Settings</h3>
+<h3>Insert</h3>
+
+<button data-element="text">Text Box</button>
+
+<button data-element="heading">Heading</button>
+
+<button data-element="image">Image</button>
+
+<button data-element="button">Button</button>
+
+<button data-element="embed">Embed URL</button>
+
+<button data-element="youtube">YouTube Video</button>
+
+<button data-element="map">Google Map</button>
+
+<button data-element="divider">Divider</button>
+
+<button data-element="gallery">Image Gallery</button>
+
+<button data-element="carousel">Image Carousel</button>
+
+<button data-element="form">Contact Form</button>
+
+<button data-element="social">Social Icons</button>
+
+
+
+<h3>Layouts</h3>
+
+<button data-layout="1">1 Column</button>
+
+<button data-layout="2">2 Columns</button>
+
+<button data-layout="3">3 Columns</button>
+
+<button data-layout="header">Header Section</button>
+
+<button data-layout="footer">Footer Section</button>
+
+
+
+<h3>Themes</h3>
+
+<button data-theme="light">Light</button>
+
+<button data-theme="dark">Dark</button>
+
+<button data-theme="modern">Modern</button>
+
+<button data-theme="classic">Classic</button>
+
+</aside>
+
+
+
+<!-- WEBSITE CANVAS -->
+
+<main id="canvas" class="canvas">
+
+<section class="site-header">
+
+<h1>Site Title</h1>
+
+<p>Welcome to your website</p>
+
+</section>
+
+
+<section class="content">
+
+<p>Drag elements here to build your site.</p>
+
+</section>
+
+</main>
+
+
+
+<!-- RIGHT SIDEBAR (SETTINGS PANEL) -->
+
+<aside class="right-panel">
+
+<h3>Element Settings</h3>
 
 <label>Text</label>
-<input id="textEdit">
 
-<label>Color</label>
-<input type="color" id="colorEdit">
+<input type="text" id="editText">
 
-<button onclick="applyChanges()">Apply</button>
 
-<button onclick="deleteElement()">Delete</button>
+<label>Font Size</label>
+
+<select>
+
+<option>12</option>
+
+<option>16</option>
+
+<option>20</option>
+
+<option>24</option>
+
+<option>32</option>
+
+</select>
+
+
+
+<label>Text Color</label>
+
+<input type="color">
+
+
+
+<label>Background Color</label>
+
+<input type="color">
+
+
+
+<label>Alignment</label>
+
+<select>
+
+<option>Left</option>
+
+<option>Center</option>
+
+<option>Right</option>
+
+</select>
+
+
+
+<button>Apply Changes</button>
+
+<button>Delete Element</button>
+
+
+
+<hr>
+
+
+
+<h3>Page Settings</h3>
+
+<label>Page Title</label>
+
+<input type="text">
+
+<label>Page URL</label>
+
+<input type="text">
+
+
+
+<button>Add Page</button>
+
+<button>Delete Page</button>
+
+
+
+<hr>
+
+
+
+<h3>Site Design</h3>
+
+<label>Font</label>
+
+<select>
+
+<option>Roboto</option>
+
+<option>Arial</option>
+
+<option>Montserrat</option>
+
+<option>Open Sans</option>
+
+</select>
+
+
+
+<label>Primary Color</label>
+
+<input type="color">
+
+<label>Background</label>
+
+<input type="color">
+
+</aside>
+
+
 
 </div>
 
-</div>
 
-<button class="export" onclick="exportSite()">Export Website</button>
 
-<script src="script.js"></script>
+<!-- PAGE MANAGER -->
+
+<footer class="page-manager">
+
+<button>Home</button>
+
+<button>About</button>
+
+<button>Contact</button>
+
+<button>Add Page</button>
+
+</footer>
+
+
 
 </body>
-</html>
+
+  </html>
