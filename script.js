@@ -85,3 +85,52 @@ a.download="website.html"
 a.click()
 
   }
+
+function applyChanges(){
+
+if(!selectedElement) return
+
+selectedElement.innerText=document.getElementById("textEdit").value
+
+selectedElement.style.color=document.getElementById("colorEdit").value
+
+}
+
+function deleteElement(){
+
+if(selectedElement){
+selectedElement.remove()
+selectedElement=null
+}
+
+}
+
+function exportSite(){
+
+let content=document.getElementById("canvas").innerHTML
+
+let html=`
+<html>
+<head>
+<title>My Site</title>
+</head>
+
+<body>
+
+${content}
+
+</body>
+</html>
+`
+
+let blob=new Blob([html],{type:"text/html"})
+
+let a=document.createElement("a")
+
+a.href=URL.createObjectURL(blob)
+
+a.download="website.html"
+
+a.click()
+
+  }
