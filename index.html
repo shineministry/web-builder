@@ -2,40 +2,51 @@
 <html>
 
 <head>
-<title>Shine Website Builder</title>
+<title>Shine Builder</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-<h2>✨ Shine Website Builder</h2>
+<h2>Shine Website Builder</h2>
 </header>
 
-<div class="container">
+<div class="editor">
 
-<div class="toolbar">
-
+<div class="left-panel">
 <h3>Elements</h3>
 
-<button onclick="addHeading()">Heading</button>
-<button onclick="addText()">Text</button>
-<button onclick="addImage()">Image</button>
-<button onclick="addButton()">Button</button>
-<button onclick="addVideo()">YouTube Video</button>
-
-<h3>Tools</h3>
-
-<button onclick="changeBackground()">Background</button>
-<button onclick="exportHTML()">Export Website</button>
+<button draggable="true" ondragstart="drag(event)" data-type="heading">Heading</button>
+<button draggable="true" ondragstart="drag(event)" data-type="text">Text</button>
+<button draggable="true" ondragstart="drag(event)" data-type="image">Image</button>
+<button draggable="true" ondragstart="drag(event)" data-type="button">Button</button>
+<button draggable="true" ondragstart="drag(event)" data-type="video">Video</button>
 
 </div>
 
-<div id="canvas" contenteditable="false"></div>
+<div id="canvas" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<div class="right-panel">
+<h3>Settings</h3>
+
+<label>Text</label>
+<input id="textEdit">
+
+<label>Color</label>
+<input type="color" id="colorEdit">
+
+<button onclick="applyChanges()">Apply</button>
+
+<button onclick="deleteElement()">Delete</button>
 
 </div>
+
+</div>
+
+<button class="export" onclick="exportSite()">Export Website</button>
 
 <script src="script.js"></script>
 
 </body>
-                          </html>
+</html>
