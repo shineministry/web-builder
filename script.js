@@ -1,108 +1,60 @@
-const canvas = document.getElementById("canvas")
+let selectedElement = null
 
-function makeEditable(el){
+function allowDrop(ev){
+ev.preventDefault()
+}
+
+function drag(ev){
+ev.dataTransfer.setData("type", ev.target.dataset.type)
+}
+
+function drop(ev){
+
+ev.preventDefault()
+
+let type = ev.dataTransfer.getData("type")
+
+let el
+
+if(type=="heading"){
+el=document.createElement("h1")
+el.innerText="Heading"
+}
+
+if(type=="text"){
+el=document.createElement("p")
+el.innerText="Paragraph text"
+}
+
+if(type=="button"){
+el=document.createElement("button")
+el.innerText="Click me"
+}
+
+if(type=="image"){
+el=document.createElement("img")
+el.src="https://via.placeholder.com/200"
+}
+
+if(type=="video"){
+el=document.createElement("iframe")
+el.src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+el.width="300"
+}
 
 el.classList.add("element")
 
-el.onclick = function(){
+el.style.left=ev.offsetX+"px"
+el.style.top=ev.offsetY+"px"
 
-let action = prompt("Type: edit / delete")
-
-if(action==="delete"){
-el.remove()
+el.onclick=function(){
+selectedElement=el
+document.getElementById("textEdit").value=el.innerText || ""
 }
 
-if(action==="edit"){
-let text = prompt("Edit text",el.innerText)
-if(text) el.innerText = text
-}
+document.getElementById("canvas").appendChild(el)
 
 }
-
-}
-
-function addHeading(){
-
-let text = prompt("Heading text")
-
-let h = document.createElement("h1")
-
-h.innerText = text
-
-makeEditable(h)
-
-canvas.appendChild(h)
-
-}
-
-function addText(){
-
-let text = prompt("Paragraph text")
-
-let p = document.createElement("p")
-
-p.innerText = text
-
-makeEditable(p)
-
-canvas.appendChild(p)
-
-}
-
-function addImage(){
-
-let url = prompt("Image URL")
-
-let img = document.createElement("img")
-
-img.src = url
-
-img.style.width="300px"
-
-makeEditable(img)
-
-canvas.appendChild(img)
-
-}
-
-function addButton(){
-
-let text = prompt("Button text")
-
-let btn = document.createElement("button")
-
-btn.innerText = text
-
-makeEditable(btn)
-
-canvas.appendChild(btn)
-
-}
-
-function addVideo(){
-
-let url = prompt("Paste YouTube embed link")
-
-let iframe = document.createElement("iframe")
-
-iframe.src = url
-
-iframe.width="400"
-
-iframe.height="250"
-
-makeEditable(iframe)
-
-canvas.appendChild(iframe)
-
-}
-
-function changeBackground(){
-
-let color = prompt("Enter background color")
-
-canvas.style.background = color
-
 }
 
 function exportHTML(){
